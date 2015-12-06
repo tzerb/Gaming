@@ -73,11 +73,81 @@ namespace CrapsLib.UnitTests
             Assert.IsFalse(plb.Roll(4, out payout));
             Assert.AreEqual(payout, 0M);
             Assert.IsTrue(plb.State == GameState.On);
-
+            plb.Odds = 100;
             Assert.IsTrue(plb.Roll(7, out payout));
-            Assert.AreEqual(payout, -100.0M);
+            Assert.AreEqual(payout, -200.0M);
             Assert.IsTrue(plb.State == GameState.Off);
 
+        }
+
+        [TestMethod]
+        public void ComeOut_Point_5()
+        {
+            decimal payout;
+            var plb = new PassLineBet(100.0M);
+            Assert.IsFalse(plb.Roll(5, out payout));
+            Assert.AreEqual(payout, 0M);
+            Assert.IsTrue(plb.State == GameState.On);
+
+            Assert.IsTrue(plb.Roll(5, out payout));
+            Assert.AreEqual(payout, 100.0M);
+            Assert.IsTrue(plb.State == GameState.Off);
+
+            plb = new PassLineBet(100.0M);
+            Assert.IsFalse(plb.Roll(5, out payout));
+            Assert.AreEqual(payout, 0M);
+            Assert.IsTrue(plb.State == GameState.On);
+
+            plb.Odds = 100;
+            Assert.IsTrue(plb.Roll(5, out payout));
+            Assert.AreEqual(payout, 250.0M);
+            Assert.IsTrue(plb.State == GameState.Off);
+
+            plb = new PassLineBet(100.0M);
+            Assert.IsFalse(plb.Roll(5, out payout));
+            Assert.AreEqual(payout, 0M);
+            Assert.IsTrue(plb.State == GameState.On);
+
+            plb.Odds = 100;
+            Assert.IsTrue(plb.Roll(7, out payout));
+            Assert.AreEqual(payout, -200.0M);
+            Assert.IsTrue(plb.State == GameState.Off);
+
+        }
+
+        [TestMethod]
+        public void ComeOut_Point_6()
+        {
+            int point = 6;
+            decimal payout;
+            var plb = new PassLineBet(100.0M);
+            Assert.IsFalse(plb.Roll(point, out payout));
+            Assert.AreEqual(payout, 0M);
+            Assert.IsTrue(plb.State == GameState.On);
+
+            Assert.IsTrue(plb.Roll(point, out payout));
+            Assert.AreEqual(payout, 100.0M);
+            Assert.IsTrue(plb.State == GameState.Off);
+
+            plb = new PassLineBet(100.0M);
+            Assert.IsFalse(plb.Roll(point, out payout));
+            Assert.AreEqual(payout, 0M);
+            Assert.IsTrue(plb.State == GameState.On);
+
+            plb.Odds = 100;
+            Assert.IsTrue(plb.Roll(point, out payout));
+            Assert.AreEqual(payout, 220.0M);
+            Assert.IsTrue(plb.State == GameState.Off);
+
+            plb = new PassLineBet(100.0M);
+            Assert.IsFalse(plb.Roll(point, out payout));
+            Assert.AreEqual(payout, 0M);
+            Assert.IsTrue(plb.State == GameState.On);
+
+            plb.Odds = 100;
+            Assert.IsTrue(plb.Roll(7, out payout));
+            Assert.AreEqual(payout, -200.0M);
+            Assert.IsTrue(plb.State == GameState.Off);
         }
     }
 }
