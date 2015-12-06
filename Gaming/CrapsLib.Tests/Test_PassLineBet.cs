@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace CrapsLib.Tests
 {
-    public class Class1
+    
+    public class PassLineBet
     {
+
     }
 }
