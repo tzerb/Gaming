@@ -56,6 +56,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Test_PropositionBet.cs" />
     <Compile Include="Test_HardWaysBet.cs" />
+    <Compile Include="Test_BonusBet.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrapsLib\CrapsLib.csproj">
