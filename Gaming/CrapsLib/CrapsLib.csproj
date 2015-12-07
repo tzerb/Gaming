@@ -40,16 +40,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BonusBet.cs" />
-    <Compile Include="DontPassBet.cs" />
-    <Compile Include="FieldBet.cs" />
-    <Compile Include="FireBet.cs" />
-    <Compile Include="HardWaysBet.cs" />
-    <Compile Include="HopBet.cs" />
-    <Compile Include="PassLineBet.cs" />
-    <Compile Include="PlaceBet.cs" />
+    <Compile Include="Bets\BonusBet.cs" />
+    <Compile Include="Bets\DontPassBet.cs" />
+    <Compile Include="Bets\FieldBet.cs" />
+    <Compile Include="Bets\FireBet.cs" />
+    <Compile Include="Bets\HardWaysBet.cs" />
+    <Compile Include="Bets\HopBet.cs" />
+    <Compile Include="Bets\PassLineBet.cs" />
+    <Compile Include="Bets\PlaceBet.cs" />
+    <Compile Include="DiceRoll.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PropositionBet.cs" />
+    <Compile Include="Bets\PropositionBet.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

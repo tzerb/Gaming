@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CrapsLib
+namespace CrapsLib.Bets
 {
-    class PlaceBet
+    class FireBet
     {
     }
 }
