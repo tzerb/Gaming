@@ -25,21 +25,27 @@ namespace CrapsLib.Bets
 
         public bool Roll(int diceRoll, out decimal payout)
         {
-            switch (diceRoll)
+            if (diceRoll == ProposedDiceRoll)
             {
-                case 2:
-                case 12:
-                    payout = Amount * 30;
-                    break;
+                switch (diceRoll)
+                {
+                    case 2:
+                    case 12:
+                        payout = Amount * 30;
+                        break;
 
-                case 3:
-                case 11:
-                    payout = Amount * 15;
-                    break;
+                    case 3:
+                    case 11:
+                        payout = Amount * 15;
+                        break;
 
-                default:
-                    payout = -1M * Amount;
-                    break;
+                    default:
+                        throw new Exception("Bad");
+                }
+            }
+            else
+            {
+                payout = -1M * Amount;
             }
             return true;
         }

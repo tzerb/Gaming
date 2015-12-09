@@ -45,12 +45,14 @@ namespace CrapsLib.Bets
                 if (diceRoll == 7 || diceRoll == 11)
                 {
                     payout = Amount;
+                    //Console.WriteLine("7/11 winner {0}", payout);
                     return true;
                 }
 
                 if (diceRoll == 2 || diceRoll == 3 || diceRoll == 12)
                 {
                     payout = -1 * Amount;
+                    //Console.WriteLine("Craps loser {0}", payout);
                     return true;
                 }
 
@@ -59,34 +61,39 @@ namespace CrapsLib.Bets
                 return false;
             }
 
-            switch(diceRoll)
+            if (diceRoll == 7)
             {
-                case 7:
-                    payout = -1.0M * (Amount + Odds);
-                    State = GameState.Off;
-                    return true;
-
-                case 4:
-                case 10:
-                    payout = Amount + (Odds * 2.0M);
-                    State = GameState.Off;
-                    return true;
-
-                case 5:
-                case 9:
-                    payout = Amount + ((int)(Odds / 2.0M)) * 3.0M;
-                    State = GameState.Off;
-                    return true;
-
-                case 6:
-                case 8:
-                    payout = Amount + ((int)(Odds / 5.0M)) * 6.0M;
-                    State = GameState.Off;
-                    return true;
-
-                default:
-                    return false;
+                payout = -1.0M * (Amount + Odds);
+                //Console.WriteLine("7 out {0}", payout);
+                State = GameState.Off;
+                return true;
             }
+            if (diceRoll == Point)
+            {
+                switch (diceRoll)
+                {
+                    case 4:
+                    case 10:
+                        payout = Amount + (Odds * 2.0M);
+                        State = GameState.Off;
+                        break;
+
+                    case 5:
+                    case 9:
+                        payout = Amount + ((int)(Odds / 2.0M)) * 3.0M;
+                        State = GameState.Off;
+                        break;
+
+                    case 6:
+                    case 8:
+                        payout = Amount + ((int)(Odds / 5.0M)) * 6.0M;
+                        State = GameState.Off;
+                        break;
+                }
+                //Console.WriteLine("Winner! {0} - {1}", diceRoll, payout);
+                return true;
+            }
+            return false;
         }
     }
 }
