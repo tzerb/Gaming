@@ -24,5 +24,16 @@ namespace CrapsLib
         {
             return new DiceRoll(r.Next(1, 7), r.Next(1, 7));
         }
+
+        public static DiceRoll SpecificRoll(int total)
+        {
+            if (total < 2 || total > 12)
+            {
+                throw new Exception("Bad total");
+            }
+            int die1 = total / 2;
+            int die2 = total - die1;
+            return new DiceRoll(die1, die2);
+        }
     }
 }

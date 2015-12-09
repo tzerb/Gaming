@@ -59,6 +59,7 @@
     <Compile Include="Test_BonusBet.cs" />
     <Compile Include="Test_FieldBet.cs" />
     <Compile Include="Test_PlaceBet.cs" />
+    <Compile Include="Test_DontPassBet.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrapsLib\CrapsLib.csproj">

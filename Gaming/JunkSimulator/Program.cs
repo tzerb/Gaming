@@ -35,7 +35,7 @@ namespace JunkSimulator
                 // var p = new CrapsLib.Bets.PropositionBet(betAmount, 11);
                 var p = new CrapsLib.Bets.PassLineBet(betAmount);
                 p.Odds = betAmount * 5.0M;
-                while (!p.Roll(roll.TotalRoll, out payout))
+                while (!p.Roll(roll, out payout))
                 {
                     roll = CrapsLib.DiceRoll.RandomRoll();
                 }

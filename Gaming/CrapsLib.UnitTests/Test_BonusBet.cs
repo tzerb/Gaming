@@ -12,15 +12,15 @@ namespace CrapsLib.UnitTests
         {
             decimal payout;
             var smb = new SmallBonusBet(100);
-            Assert.IsTrue(smb.Roll(2, out payout));
+            Assert.IsTrue(smb.Roll(new DiceRoll(1,1), out payout));
             Assert.AreEqual(payout, 0);
-            Assert.IsTrue(smb.Roll(3, out payout));
+            Assert.IsTrue(smb.Roll(new DiceRoll(1, 2), out payout));
             Assert.AreEqual(payout, 0);
-            Assert.IsTrue(smb.Roll(4, out payout));
+            Assert.IsTrue(smb.Roll(new DiceRoll(1, 3), out payout));
             Assert.AreEqual(payout, 0);
-            Assert.IsTrue(smb.Roll(5, out payout));
+            Assert.IsTrue(smb.Roll(new DiceRoll(1, 4), out payout));
             Assert.AreEqual(payout, 0);
-            Assert.IsFalse(smb.Roll(6, out payout));
+            Assert.IsFalse(smb.Roll(new DiceRoll(1, 5), out payout));
             Assert.AreEqual(payout, 3400);
         }
 
@@ -29,7 +29,7 @@ namespace CrapsLib.UnitTests
         {
             decimal payout;
             var smb = new SmallBonusBet(100);
-            Assert.IsFalse(smb.Roll(7, out payout));
+            Assert.IsFalse(smb.Roll(new DiceRoll(1, 6), out payout));
             Assert.AreEqual(payout, -100);
         }
 
@@ -38,15 +38,15 @@ namespace CrapsLib.UnitTests
         {
             decimal payout;
             var tbb = new TallBonusBet(100);
-            Assert.IsTrue(tbb.Roll(12, out payout));
+            Assert.IsTrue(tbb.Roll(new DiceRoll(6, 6), out payout));
             Assert.AreEqual(payout, 0);
-            Assert.IsTrue(tbb.Roll(11, out payout));
+            Assert.IsTrue(tbb.Roll(new DiceRoll(6, 5), out payout));
             Assert.AreEqual(payout, 0);
-            Assert.IsTrue(tbb.Roll(10, out payout));
+            Assert.IsTrue(tbb.Roll(new DiceRoll(6, 4), out payout));
             Assert.AreEqual(payout, 0);
-            Assert.IsTrue(tbb.Roll(9, out payout));
+            Assert.IsTrue(tbb.Roll(new DiceRoll(6, 3), out payout));
             Assert.AreEqual(payout, 0);
-            Assert.IsFalse(tbb.Roll(8, out payout));
+            Assert.IsFalse(tbb.Roll(new DiceRoll(6, 2), out payout));
             Assert.AreEqual(payout, 3400);
         }
 
@@ -55,7 +55,7 @@ namespace CrapsLib.UnitTests
         {
             decimal payout;
             var tbb = new TallBonusBet(100);
-            Assert.IsFalse(tbb.Roll(7, out payout));
+            Assert.IsFalse(tbb.Roll(new DiceRoll(1, 6), out payout));
             Assert.AreEqual(payout, -100);
         }
 
@@ -64,26 +64,26 @@ namespace CrapsLib.UnitTests
         {
             decimal payout;
             var abb = new AllBonusBet(100);
-            Assert.IsTrue(abb.Roll(2, out payout));
+            Assert.IsTrue(abb.Roll(new DiceRoll(1, 1), out payout));
             Assert.AreEqual(payout, 0);
-            Assert.IsTrue(abb.Roll(3, out payout));
+            Assert.IsTrue(abb.Roll(new DiceRoll(1, 2), out payout));
             Assert.AreEqual(payout, 0);
-            Assert.IsTrue(abb.Roll(4, out payout));
+            Assert.IsTrue(abb.Roll(new DiceRoll(1, 3), out payout));
             Assert.AreEqual(payout, 0);
-            Assert.IsTrue(abb.Roll(5, out payout));
+            Assert.IsTrue(abb.Roll(new DiceRoll(1, 4), out payout));
             Assert.AreEqual(payout, 0);
-            Assert.IsTrue(abb.Roll(6, out payout));
+            Assert.IsTrue(abb.Roll(new DiceRoll(1, 5), out payout));
             Assert.AreEqual(payout, 0);
 
-            Assert.IsTrue(abb.Roll(8, out payout));
+            Assert.IsTrue(abb.Roll(new DiceRoll(6, 6), out payout));
             Assert.AreEqual(payout, 0);
-            Assert.IsTrue(abb.Roll(9, out payout));
+            Assert.IsTrue(abb.Roll(new DiceRoll(6, 5), out payout));
             Assert.AreEqual(payout, 0);
-            Assert.IsTrue(abb.Roll(10, out payout));
+            Assert.IsTrue(abb.Roll(new DiceRoll(6, 4), out payout));
             Assert.AreEqual(payout, 0);
-            Assert.IsTrue(abb.Roll(11, out payout));
+            Assert.IsTrue(abb.Roll(new DiceRoll(6, 3), out payout));
             Assert.AreEqual(payout, 0);
-            Assert.IsFalse(abb.Roll(12, out payout));
+            Assert.IsFalse(abb.Roll(new DiceRoll(6, 2), out payout));
 
             Assert.AreEqual(payout, 17500);
         }
@@ -92,7 +92,7 @@ namespace CrapsLib.UnitTests
         {
             decimal payout;
             var abb = new AllBonusBet(100);
-            Assert.IsFalse(abb.Roll(7, out payout));
+            Assert.IsFalse(abb.Roll(new DiceRoll(6, 1), out payout));
             Assert.AreEqual(payout, -100);
         }
     }

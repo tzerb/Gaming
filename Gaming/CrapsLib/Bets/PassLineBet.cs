@@ -22,7 +22,7 @@ namespace CrapsLib.Bets
 
     }
 
-    public class PassLineBet
+    public class PassLineBet : IBet
     {
         public GameState State { get; set; }
         public int Point { get; set; }
@@ -37,8 +37,9 @@ namespace CrapsLib.Bets
             State = GameState.Off;
         }
 
-        public bool Roll(int diceRoll, out decimal payout)
+        public bool Roll(DiceRoll dice, out decimal payout)
         {
+            int diceRoll = dice.TotalRoll;
             payout = 0M;
             if (State == GameState.Off)
             {
