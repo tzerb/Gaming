@@ -12,7 +12,7 @@ namespace CrapsLib.UnitTests
         {
             decimal payout;
             var plb = new PassLineBet(100.0M);
-            Assert.IsTrue(plb.Roll(DiceRoll.SpecificRoll(7), out payout));
+            Assert.IsTrue(plb.Roll(DiceRoll.SpecificTotal(7), out payout));
             Assert.AreEqual(payout, 100.0M);
             Assert.IsTrue(plb.State == GameState.Off);
         }
@@ -22,7 +22,7 @@ namespace CrapsLib.UnitTests
         {
             decimal payout;
             var plb = new PassLineBet(100.0M);
-            Assert.IsTrue(plb.Roll(DiceRoll.SpecificRoll(11), out payout));
+            Assert.IsTrue(plb.Roll(DiceRoll.SpecificTotal(11), out payout));
             Assert.AreEqual(payout, 100.0M);
             Assert.IsTrue(plb.State == GameState.Off);
         }
@@ -32,17 +32,17 @@ namespace CrapsLib.UnitTests
         {
             decimal payout;
             var plb = new PassLineBet(100.0M);
-            Assert.IsTrue(plb.Roll(DiceRoll.SpecificRoll(2), out payout));
+            Assert.IsTrue(plb.Roll(DiceRoll.SpecificTotal(2), out payout));
             Assert.AreEqual(payout, -100.0M);
             Assert.IsTrue(plb.State == GameState.Off);
 
             plb = new PassLineBet(100.0M);
-            Assert.IsTrue(plb.Roll(DiceRoll.SpecificRoll(3), out payout));
+            Assert.IsTrue(plb.Roll(DiceRoll.SpecificTotal(3), out payout));
             Assert.AreEqual(payout, -100.0M);
             Assert.IsTrue(plb.State == GameState.Off);
 
             plb = new PassLineBet(100.0M);
-            Assert.IsTrue(plb.Roll(DiceRoll.SpecificRoll(12), out payout));
+            Assert.IsTrue(plb.Roll(DiceRoll.SpecificTotal(12), out payout));
             Assert.AreEqual(payout, -100.0M);
             Assert.IsTrue(plb.State == GameState.Off);
         }
@@ -52,30 +52,30 @@ namespace CrapsLib.UnitTests
         {
             decimal payout;
             var plb = new PassLineBet(100.0M);
-            Assert.IsFalse(plb.Roll(DiceRoll.SpecificRoll(4), out payout));
+            Assert.IsFalse(plb.Roll(DiceRoll.SpecificTotal(4), out payout));
             Assert.AreEqual(payout, 0M);
             Assert.IsTrue(plb.State == GameState.On);
 
-            Assert.IsTrue(plb.Roll(DiceRoll.SpecificRoll(4), out payout));
+            Assert.IsTrue(plb.Roll(DiceRoll.SpecificTotal(4), out payout));
             Assert.AreEqual(payout, 100.0M);
             Assert.IsTrue(plb.State == GameState.Off);
 
             plb = new PassLineBet(100.0M);
-            Assert.IsFalse(plb.Roll(DiceRoll.SpecificRoll(4), out payout));
+            Assert.IsFalse(plb.Roll(DiceRoll.SpecificTotal(4), out payout));
             Assert.AreEqual(payout, 0M);
             Assert.IsTrue(plb.State == GameState.On);
 
             plb.Odds = 100;
-            Assert.IsTrue(plb.Roll(DiceRoll.SpecificRoll(4), out payout));
+            Assert.IsTrue(plb.Roll(DiceRoll.SpecificTotal(4), out payout));
             Assert.AreEqual(payout, 300.0M);
             Assert.IsTrue(plb.State == GameState.Off);
 
             plb = new PassLineBet(100.0M);
-            Assert.IsFalse(plb.Roll(DiceRoll.SpecificRoll(4), out payout));
+            Assert.IsFalse(plb.Roll(DiceRoll.SpecificTotal(4), out payout));
             Assert.AreEqual(payout, 0M);
             Assert.IsTrue(plb.State == GameState.On);
             plb.Odds = 100;
-            Assert.IsTrue(plb.Roll(DiceRoll.SpecificRoll(7), out payout));
+            Assert.IsTrue(plb.Roll(DiceRoll.SpecificTotal(7), out payout));
             Assert.AreEqual(payout, -200.0M);
             Assert.IsTrue(plb.State == GameState.Off);
 
@@ -86,31 +86,31 @@ namespace CrapsLib.UnitTests
         {
             decimal payout;
             var plb = new PassLineBet(100.0M);
-            Assert.IsFalse(plb.Roll(DiceRoll.SpecificRoll(5), out payout));
+            Assert.IsFalse(plb.Roll(DiceRoll.SpecificTotal(5), out payout));
             Assert.AreEqual(payout, 0M);
             Assert.IsTrue(plb.State == GameState.On);
 
-            Assert.IsTrue(plb.Roll(DiceRoll.SpecificRoll(5), out payout));
+            Assert.IsTrue(plb.Roll(DiceRoll.SpecificTotal(5), out payout));
             Assert.AreEqual(payout, 100.0M);
             Assert.IsTrue(plb.State == GameState.Off);
 
             plb = new PassLineBet(100.0M);
-            Assert.IsFalse(plb.Roll(DiceRoll.SpecificRoll(5), out payout));
+            Assert.IsFalse(plb.Roll(DiceRoll.SpecificTotal(5), out payout));
             Assert.AreEqual(payout, 0M);
             Assert.IsTrue(plb.State == GameState.On);
 
             plb.Odds = 100;
-            Assert.IsTrue(plb.Roll(DiceRoll.SpecificRoll(5), out payout));
+            Assert.IsTrue(plb.Roll(DiceRoll.SpecificTotal(5), out payout));
             Assert.AreEqual(payout, 250.0M);
             Assert.IsTrue(plb.State == GameState.Off);
 
             plb = new PassLineBet(100.0M);
-            Assert.IsFalse(plb.Roll(DiceRoll.SpecificRoll(5), out payout));
+            Assert.IsFalse(plb.Roll(DiceRoll.SpecificTotal(5), out payout));
             Assert.AreEqual(payout, 0M);
             Assert.IsTrue(plb.State == GameState.On);
 
             plb.Odds = 100;
-            Assert.IsTrue(plb.Roll(DiceRoll.SpecificRoll(7), out payout));
+            Assert.IsTrue(plb.Roll(DiceRoll.SpecificTotal(7), out payout));
             Assert.AreEqual(payout, -200.0M);
             Assert.IsTrue(plb.State == GameState.Off);
 
@@ -122,31 +122,31 @@ namespace CrapsLib.UnitTests
             int point = 6;
             decimal payout;
             var plb = new PassLineBet(100.0M);
-            Assert.IsFalse(plb.Roll(DiceRoll.SpecificRoll(point), out payout));
+            Assert.IsFalse(plb.Roll(DiceRoll.SpecificTotal(point), out payout));
             Assert.AreEqual(payout, 0M);
             Assert.IsTrue(plb.State == GameState.On);
 
-            Assert.IsTrue(plb.Roll(DiceRoll.SpecificRoll(point), out payout));
+            Assert.IsTrue(plb.Roll(DiceRoll.SpecificTotal(point), out payout));
             Assert.AreEqual(payout, 100.0M);
             Assert.IsTrue(plb.State == GameState.Off);
 
             plb = new PassLineBet(100.0M);
-            Assert.IsFalse(plb.Roll(DiceRoll.SpecificRoll(point), out payout));
+            Assert.IsFalse(plb.Roll(DiceRoll.SpecificTotal(point), out payout));
             Assert.AreEqual(payout, 0M);
             Assert.IsTrue(plb.State == GameState.On);
 
             plb.Odds = 100;
-            Assert.IsTrue(plb.Roll(DiceRoll.SpecificRoll(point), out payout));
+            Assert.IsTrue(plb.Roll(DiceRoll.SpecificTotal(point), out payout));
             Assert.AreEqual(payout, 220.0M);
             Assert.IsTrue(plb.State == GameState.Off);
 
             plb = new PassLineBet(100.0M);
-            Assert.IsFalse(plb.Roll(DiceRoll.SpecificRoll(point), out payout));
+            Assert.IsFalse(plb.Roll(DiceRoll.SpecificTotal(point), out payout));
             Assert.AreEqual(payout, 0M);
             Assert.IsTrue(plb.State == GameState.On);
 
             plb.Odds = 100;
-            Assert.IsTrue(plb.Roll(DiceRoll.SpecificRoll(7), out payout));
+            Assert.IsTrue(plb.Roll(DiceRoll.SpecificTotal(7), out payout));
             Assert.AreEqual(payout, -200.0M);
             Assert.IsTrue(plb.State == GameState.Off);
         }

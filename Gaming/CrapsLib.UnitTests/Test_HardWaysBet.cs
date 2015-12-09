@@ -13,25 +13,25 @@ namespace CrapsLib.UnitTests
             decimal payout = 0M;
             var hwb = new HardWaysBet(100M, 4);
             hwb.State = GameState.On;
-            Assert.IsTrue(hwb.Roll(4, true, out payout));
+            Assert.IsTrue(hwb.Roll(DiceRoll.SpecificRoll(2,2), out payout));
             Assert.AreEqual(payout, 700);
 
             payout = 0M;
             hwb = new HardWaysBet(100M, 4);
             hwb.State = GameState.On;
-            Assert.IsTrue(hwb.Roll(4, false, out payout));
+            Assert.IsTrue(hwb.Roll(DiceRoll.SpecificRoll(3, 1), out payout));
             Assert.AreEqual(payout, -100);
 
             payout = 0M;
             hwb = new HardWaysBet(100M, 4);
             hwb.State = GameState.On;
-            Assert.IsTrue(hwb.Roll(7, false, out payout));
+            Assert.IsTrue(hwb.Roll(DiceRoll.SpecificRoll(3, 4), out payout));
             Assert.AreEqual(payout, -100);
 
             payout = 0M;
             hwb = new HardWaysBet(100M, 4);
             hwb.State = GameState.On;
-            Assert.IsFalse(hwb.Roll(5, false, out payout));
+            Assert.IsFalse(hwb.Roll(DiceRoll.SpecificRoll(3, 2), out payout));
             Assert.AreEqual(payout, 0M);
 
         }

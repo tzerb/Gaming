@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CrapsLib.Bets
 {
-    public class PlaceBet
+    public class PlaceBet : IBet
     {
         public decimal Amount { get; }
         public int DesiredRoll { get; }
@@ -23,17 +23,17 @@ namespace CrapsLib.Bets
             multipliers.Add(10, 9M / 5M);
         }
 
-        public bool Roll(int diceRoll, out decimal payout)
+        public bool Roll(DiceRoll diceRoll, out decimal payout)
         {
-            if (diceRoll == 7)
+            if (diceRoll.TotalRoll == 7)
             {
                 payout = -1M * Amount;
                 return false;
             }
 
-            if (multipliers.ContainsKey(diceRoll))
+            if (multipliers.ContainsKey(diceRoll.TotalRoll))
             {
-                payout = multipliers[diceRoll] * Amount;
+                payout = multipliers[diceRoll.TotalRoll] * Amount;
                 return false;
             }
 

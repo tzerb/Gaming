@@ -12,23 +12,23 @@ namespace CrapsLib.UnitTests
         {
             decimal payout;
             var fb = new FieldBet(100);
-            Assert.IsFalse(fb.Roll(3, false, out payout));
+            Assert.IsFalse(fb.Roll(DiceRoll.SpecificTotal(3), out payout));
             Assert.AreEqual(payout, 100);
 
             fb = new FieldBet(100);
-            Assert.IsFalse(fb.Roll(4, false, out payout));
+            Assert.IsFalse(fb.Roll(DiceRoll.SpecificTotal(4), out payout));
             Assert.AreEqual(payout, 100);
 
             fb = new FieldBet(100);
-            Assert.IsFalse(fb.Roll(9, false, out payout));
+            Assert.IsFalse(fb.Roll(DiceRoll.SpecificTotal(9), out payout));
             Assert.AreEqual(payout, 100);
 
             fb = new FieldBet(100);
-            Assert.IsFalse(fb.Roll(10, false, out payout));
+            Assert.IsFalse(fb.Roll(DiceRoll.SpecificTotal(10), out payout));
             Assert.AreEqual(payout, 100);
 
             fb = new FieldBet(100);
-            Assert.IsFalse(fb.Roll(11, false, out payout));
+            Assert.IsFalse(fb.Roll(DiceRoll.SpecificTotal(11), out payout));
             Assert.AreEqual(payout, 100);
 
         }
@@ -38,11 +38,11 @@ namespace CrapsLib.UnitTests
         {
             decimal payout;
             var fb = new FieldBet(100);
-            Assert.IsFalse(fb.Roll(2, false, out payout));
+            Assert.IsFalse(fb.Roll(DiceRoll.SpecificTotal(2), out payout));
             Assert.AreEqual(payout, 200);
 
             fb = new FieldBet(100);
-            Assert.IsFalse(fb.Roll(12, false, out payout));
+            Assert.IsFalse(fb.Roll(DiceRoll.SpecificTotal(12), out payout));
             Assert.AreEqual(payout, 200);
         }
 
@@ -51,19 +51,19 @@ namespace CrapsLib.UnitTests
         {
             decimal payout;
             var fb = new FieldBet(100);
-            Assert.IsFalse(fb.Roll(5, false, out payout));
+            Assert.IsFalse(fb.Roll(DiceRoll.SpecificTotal(5), out payout));
             Assert.AreEqual(payout, -100);
 
             fb = new FieldBet(100);
-            Assert.IsFalse(fb.Roll(6, false, out payout));
+            Assert.IsFalse(fb.Roll(DiceRoll.SpecificTotal(6), out payout));
             Assert.AreEqual(payout, -100);
 
             fb = new FieldBet(100);
-            Assert.IsFalse(fb.Roll(7, false, out payout));
+            Assert.IsFalse(fb.Roll(DiceRoll.SpecificTotal(7), out payout));
             Assert.AreEqual(payout, -100);
 
             fb = new FieldBet(100);
-            Assert.IsFalse(fb.Roll(8, false, out payout));
+            Assert.IsFalse(fb.Roll(DiceRoll.SpecificTotal(8), out payout));
             Assert.AreEqual(payout, -100);
         }
 

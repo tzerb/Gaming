@@ -12,7 +12,7 @@ namespace CrapsLib.UnitTests
         {
             decimal payout;
             var pb = new PlaceBet(120, 6);
-            Assert.IsFalse(pb.Roll(6, out payout));
+            Assert.IsFalse(pb.Roll(DiceRoll.SpecificTotal(6), out payout));
             Assert.AreEqual(payout, 140);
         }
         [TestMethod]
@@ -20,7 +20,7 @@ namespace CrapsLib.UnitTests
         {
             decimal payout;
             var pb = new PlaceBet(120, 6);
-            Assert.IsFalse(pb.Roll(7, out payout));
+            Assert.IsFalse(pb.Roll(DiceRoll.SpecificTotal(7), out payout));
             Assert.AreEqual(payout, -120);
         }
     }

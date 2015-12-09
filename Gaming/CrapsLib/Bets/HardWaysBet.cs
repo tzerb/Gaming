@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CrapsLib.Bets
 {
-    public class HardWaysBet
+    public class HardWaysBet : IBet
     {
         public decimal Amount { get; set; }
         public int ProposedDiceRoll { get; set; }
@@ -36,14 +36,14 @@ namespace CrapsLib.Bets
             }
         }
 
-        public bool Roll(int diceRoll, bool hard, out decimal payout)
+        public bool Roll(DiceRoll diceRoll, out decimal payout)
         {
-            if (diceRoll == ProposedDiceRoll)
+            if (diceRoll.TotalRoll == ProposedDiceRoll)
             {
-                payout = hard ? (Amount * PayoutMultiplier) : (-1.0M * Amount);
+                payout = diceRoll.IsHardWay ? (Amount * PayoutMultiplier) : (-1.0M * Amount);
                 return true;
             }
-            if (diceRoll == 7)
+            if (diceRoll.TotalRoll == 7)
             {
                 payout = (-1.0M * Amount);
                 return true;
@@ -51,5 +51,6 @@ namespace CrapsLib.Bets
             payout = 0M;
             return false;
         }
+
     }
 }

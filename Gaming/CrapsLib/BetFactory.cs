@@ -18,5 +18,10 @@ namespace CrapsLib
         {
             return new PassLineBet(amount);
         }
+
+        public IBet Hard(decimal amount, int proposedDiceRoll)
+        {
+            return new HardWaysBet(amount, proposedDiceRoll);
+        }
     }
 }

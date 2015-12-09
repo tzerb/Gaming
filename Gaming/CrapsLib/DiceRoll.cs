@@ -25,7 +25,7 @@ namespace CrapsLib
             return new DiceRoll(r.Next(1, 7), r.Next(1, 7));
         }
 
-        public static DiceRoll SpecificRoll(int total)
+        public static DiceRoll SpecificTotal(int total)
         {
             if (total < 2 || total > 12)
             {
@@ -33,6 +33,11 @@ namespace CrapsLib
             }
             int die1 = total / 2;
             int die2 = total - die1;
+            return new DiceRoll(die1, die2);
+        }
+
+        public static DiceRoll SpecificRoll(int die1, int die2)
+        {
             return new DiceRoll(die1, die2);
         }
     }

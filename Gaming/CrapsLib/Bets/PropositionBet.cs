@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CrapsLib.Bets
 {
-    public class PropositionBet
+    public class PropositionBet : IBet
     {
         public decimal Amount { get; set; }
         public int ProposedDiceRoll { get; set; }
@@ -23,8 +23,9 @@ namespace CrapsLib.Bets
             }
         }
 
-        public bool Roll(int diceRoll, out decimal payout)
+        public bool Roll(DiceRoll dice, out decimal payout)
         {
+            var diceRoll = dice.TotalRoll;
             if (diceRoll == ProposedDiceRoll)
             {
                 switch (diceRoll)
