@@ -1,0 +1,25 @@
+﻿<Window x:Class="CrapsGame.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:cal="http://www.caliburnproject.org"
+        xmlns:local="clr-namespace:CrapsGame_"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="159*"/>
+            <ColumnDefinition Width="199*"/>
+            <ColumnDefinition Width="159*"/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="Roll" cal:Message.Attach="[Event Click] = [Action Roll()]" Content="Roll" HorizontalAlignment="Left" Margin="48,199,0,0" VerticalAlignment="Top" Width="75"/>
+        <TextBlock x:Name="tbDie1" HorizontalAlignment="Left" Margin="10,35,0,0" TextWrapping="Wrap" Text="{Binding Die1}" VerticalAlignment="Top"/>
+        <TextBlock x:Name="tbDie2" HorizontalAlignment="Left" Margin="73,35,0,0" TextWrapping="Wrap" Text="{Binding Die2}" VerticalAlignment="Top"/>
+        <TextBlock x:Name="tbIsOn" HorizontalAlignment="Left" Margin="10,55,0,0" TextWrapping="Wrap" Text="{Binding IsOn}" VerticalAlignment="Top"/>
+        <TextBlock x:Name="tbPoint" HorizontalAlignment="Left" Margin="73,55,0,0" TextWrapping="Wrap" Text="{Binding Point}" VerticalAlignment="Top"/>
+        <TextBlock x:Name="tbBank" HorizontalAlignment="Left" Margin="10,75,0,0" TextWrapping="Wrap" Text="{Binding Bank}" VerticalAlignment="Top"/>
+        <TextBlock x:Name="tbXXXX" HorizontalAlignment="Left" Margin="73,75,0,0" TextWrapping="Wrap" Text="{Binding Point}" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>

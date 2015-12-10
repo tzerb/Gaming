@@ -11,14 +11,16 @@ namespace JunkSimulator
         static void Main(string[] args)
         {
             //DisplayRollDistribution();
-            decimal bank = 0M;
-            int trips = 1000;
-            for (int i = 1; i < trips; i++)
+            do
             {
-                bank += PassLineResults();
-            }
-            Console.WriteLine("TotalBank = {0} | {1:n2} / trip", bank, bank / trips);
-            Console.ReadKey();
+                decimal bank = 0M;
+                int trips = 100;
+                for (int i = 1; i < trips; i++)
+                {
+                    bank += PassLineResults();
+                }
+                Console.WriteLine("TotalBank = {0} | {1:n2} / trip", bank, bank / trips);
+            } while (Console.ReadKey().Key != ConsoleKey.A);
         }
 
         static decimal PassLineResults()

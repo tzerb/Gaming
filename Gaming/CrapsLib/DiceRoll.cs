@@ -13,6 +13,16 @@ namespace CrapsLib
 
         public bool IsHardWay => Die1 == Die2;
         public int TotalRoll => Die1 + Die2;
+
+        public bool IsPointNumber
+        {
+            get
+            {
+                return (TotalRoll == 4 || TotalRoll == 5 || TotalRoll == 6
+                     || TotalRoll == 10 || TotalRoll == 9 || TotalRoll == 8);
+            }
+        }
+
         public DiceRoll(int die1, int die2)
         {
             Die1 = die1;
